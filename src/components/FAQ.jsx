@@ -1,14 +1,19 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
-  const contentRef = useRef(null);
-  
   return (
-    <div
-      className={`rounded-2xl shadow-md border transition-all duration-500 ease-out ${
-        isOpen ? 'border-blue-50 bg-gray-50' : 'border-gray-200 bg-white'
+    <motion.div
+      initial={false}
+      animate={{
+        boxShadow: isOpen
+          ? '0 4px 20px rgba(59, 130, 246, 0.5)'
+          : '0 2px 10px rgba(0, 0, 0, 0.1)',
+      }}
+      className={`rounded-2xl border transition-all duration-500 ease-out ${
+        isOpen ? 'border-blue-200 bg-gray-50' : 'border-gray-200 bg-white'
       } mb-4`}
     >
       {/* Question Section */}
@@ -19,7 +24,10 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
         aria-expanded={isOpen}
       >
         <h3 className="text-lg font-medium text-gray-900">{question}</h3>
-        <div className="transform transition-transform duration-500 ease-in-out">
+        <motion.div
+          animate={{ rotate: isOpen ? -90 : 0 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+        >
           {isOpen ? (
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -31,8 +39,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round" 
-              className="text-blue-500 transition-all duration-500"
-              style={{ transform: 'rotate(0deg)' }}
+              className="text-blue-500"
             >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -48,31 +55,29 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round" 
-              className="text-blue-500 transition-all duration-500"
-              style={{ transform: 'rotate(0deg)' }}
+              className="text-blue-500"
             >
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
           )}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Answer Section with height animation */}
-      <div 
-        ref={contentRef}
-        className={`overflow-hidden transition-all duration-500 ease-in-out`}
-        style={{ 
-          maxHeight: isOpen ? `${contentRef.current?.scrollHeight || 1000}px` : '0px',
+      {/* Answer Section */}
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? 'auto' : 0,
           opacity: isOpen ? 1 : 0,
-          marginBottom: isOpen ? '8px' : '0px'
         }}
+        className="overflow-hidden"
       >
         <div className="py-4 px-6 text-gray-700">
           {answer}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -90,19 +95,19 @@ const FAQ = () => {
   const faqData = [
     {
       question: "How does SignalsHQ work?",
-      answer: "SignalsHQ is like your extended team. It brings all your data management in one place, where you can request PBC from clients, standardize the data, analyse flux and finally conduct test of details for relevant transactions. All of this is done in one place with complete audit trails"
+      answer: "SignalsHQ is like your extended team. It brings all your data management in one place..."
     },
     {
       question: "Is my data secure?",
-      answer: "Yes, your data is fully encrypted and protected with industry-standard security measures. We implement end-to-end encryption, regular security audits, and strict access controls."
+      answer: "Yes, your data is fully encrypted and protected with industry-standard security measures."
     },
     {
       question: "What use cases does SignalsHQ work for?",
-      answer: "SignalsHQ works for various data management workflows including audit data collection, financial reporting, compliance processes, and any scenario where you need to collect, standardize, and analyze data from multiple sources."
+      answer: "SignalsHQ works for various data management workflows including audit data collection..."
     },
     {
       question: "How do I get started?",
-      answer: "Getting started is easy. Simply sign up for an account, set up your team, and begin adding your data sources. Our onboarding team will guide you through the process and provide any necessary training."
+      answer: "Getting started is easy. Simply sign up for an account, set up your team..."
     }
   ];
 
