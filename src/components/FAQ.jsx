@@ -13,17 +13,19 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
           : '0 2px 10px rgba(0, 0, 0, 0.1)',
       }}
       className={`rounded-2xl border transition-all duration-500 ease-out ${
-        isOpen ? 'border-blue-200 bg-gray-50' : 'border-gray-200 bg-white'
+        isOpen
+          ? 'border-blue-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700'
+          : 'border-gray-200 bg-white dark:bg-gray-900 dark:border-gray-700'
       } mb-4`}
     >
       {/* Question Section */}
-      <div 
+      <div
         className="flex justify-between items-center py-4 px-6 cursor-pointer select-none"
         onClick={onClick}
         role="button"
         aria-expanded={isOpen}
       >
-        <h3 className="text-lg font-medium text-gray-900">{question}</h3>
+        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">{question}</h3>
         <motion.div
           animate={{ rotate: isOpen ? -90 : 0 }}
           transition={{ type: 'spring', stiffness: 200, damping: 20 }}
@@ -73,7 +75,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
         }}
         className="overflow-hidden"
       >
-        <div className="py-4 px-6 text-gray-700">
+        <div className="py-4 px-6 text-gray-700 dark:text-gray-300">
           {answer}
         </div>
       </motion.div>
@@ -112,16 +114,20 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="w-full bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-6xl mx-auto p-6">
       <div className="flex flex-col md:flex-row gap-12">
         {/* Left Side */}
         <div className="md:w-1/3">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Frequently <br /> asked questions
           </h2>
-          <p className="text-gray-500">
+          <p className="text-gray-500 dark:text-gray-400">
             Have questions? We've got answers. For everything else email me at{' '}
-            <a href="mailto:adityahongalwork@gmail.com" className="text-blue-500 underline">
+            <a
+              href="mailto:adityahongalwork@gmail.com"
+              className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 underline"
+            >
               adityahongalwork@gmail.com
             </a>
             .
@@ -131,7 +137,7 @@ const FAQ = () => {
         {/* Right Side */}
         <div className="md:w-2/3 flex flex-col">
           {faqData.map((faq, index) => (
-            <FAQItem 
+            <FAQItem
               key={index}
               question={faq.question}
               answer={faq.answer}
@@ -140,6 +146,7 @@ const FAQ = () => {
             />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );
