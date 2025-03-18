@@ -1,8 +1,11 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from './ThemeContext';
 
 export default function Stats() {
+  const { theme } = useTheme();
+
   // Animation variants for staggered children
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,104 +78,118 @@ export default function Stats() {
   };
 
   return (
-    <section className="py-16 px-4 max-w-6xl mx-auto bg-[#ffffff] mb-10">
-      <motion.h2 
-        className="text-4xl font-bold text-center mb-16 text-gray-900"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        Our customers achieve outstanding ROI
-      </motion.h2>
-      
-      <motion.div 
-        className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        viewport={{ once: true }}
-      >
-        {/* First stat card */}
-        <motion.div 
-          className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center text-center"
-          variants={cardVariants}
-          whileHover="hover"
+    <section className={`py-16 px-4 w-full transition-all duration-300 ease-in-out
+      ${theme === 'light' 
+        ? 'bg-gradient-to-t from-white to-indigo-50' 
+        : 'bg-gradient-to-t from-gray-900 to-indigo-950'}`}>
+      <div className="max-w-6xl mx-auto mb-10">
+        <motion.h2 
+          className="text-4xl font-bold text-center mb-16 transition-colors duration-300 ease-in-out dark:text-white text-gray-900"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          <motion.div 
-            className="text-6xl font-bold mb-3"
-            style={{
-              backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-            variants={numberVariants}
-            animate={lightingEffect.animate}
-          >
-            80%
-          </motion.div>
-          <motion.div 
-            className="text-gray-700"
-            variants={textVariants}
-          >
-            reduction in manual effort
-          </motion.div>
-        </motion.div>
+          Our customers achieve outstanding ROI
+        </motion.h2>
         
-        {/* Second stat card */}
         <motion.div 
-          className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center text-center"
-          variants={cardVariants}
-          whileHover="hover"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true }}
         >
+          {/* First stat card */}
           <motion.div 
-            className="text-6xl font-bold mb-3"
-            style={{
-              backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-            variants={numberVariants}
-            animate={lightingEffect.animate}
+            className={`rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 ease-in-out
+              ${theme === 'light' 
+                ? 'bg-white shadow-lg' 
+                : 'bg-gray-800 shadow-lg shadow-indigo-500/20'}`}
+            variants={cardVariants}
+            whileHover="hover"
           >
-            5X
+            <motion.div 
+              className="text-6xl font-bold mb-3"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+              variants={numberVariants}
+              animate={lightingEffect.animate}
+            >
+              80%
+            </motion.div>
+            <motion.div 
+              className="transition-colors duration-300 ease-in-out dark:text-gray-300 text-gray-700"
+              variants={textVariants}
+            >
+              reduction in manual effort
+            </motion.div>
           </motion.div>
+          
+          {/* Second stat card */}
           <motion.div 
-            className="text-gray-700"
-            variants={textVariants}
+            className={`rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 ease-in-out
+              ${theme === 'light' 
+                ? 'bg-white shadow-lg' 
+                : 'bg-gray-800 shadow-lg shadow-indigo-500/20'}`}
+            variants={cardVariants}
+            whileHover="hover"
           >
-            risk identification
+            <motion.div 
+              className="text-6xl font-bold mb-3"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+              variants={numberVariants}
+              animate={lightingEffect.animate}
+            >
+              5X
+            </motion.div>
+            <motion.div 
+              className="transition-colors duration-300 ease-in-out dark:text-gray-300 text-gray-700"
+              variants={textVariants}
+            >
+              risk identification
+            </motion.div>
+          </motion.div>
+          
+          {/* Third stat card */}
+          <motion.div 
+            className={`rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 ease-in-out
+              ${theme === 'light' 
+                ? 'bg-white shadow-lg' 
+                : 'bg-gray-800 shadow-lg shadow-indigo-500/20'}`}
+            variants={cardVariants}
+            whileHover="hover"
+          >
+            <motion.div 
+              className="text-6xl font-bold mb-3"
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+              variants={numberVariants}
+              animate={lightingEffect.animate}
+            >
+              2X
+            </motion.div>
+            <motion.div 
+              className="transition-colors duration-300 ease-in-out dark:text-gray-300 text-gray-700"
+              variants={textVariants}
+            >
+              document speed
+            </motion.div>
           </motion.div>
         </motion.div>
-        
-        {/* Third stat card */}
-        <motion.div 
-          className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-center text-center"
-          variants={cardVariants}
-          whileHover="hover"
-        >
-          <motion.div 
-            className="text-6xl font-bold mb-3"
-            style={{
-              backgroundImage: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
-            variants={numberVariants}
-            animate={lightingEffect.animate}
-          >
-            2X
-          </motion.div>
-          <motion.div 
-            className="text-gray-700"
-            variants={textVariants}
-          >
-            document speed
-          </motion.div>
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
