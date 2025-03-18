@@ -10,6 +10,7 @@
     "tailwind:init": "node ./node_modules/tailwindcss/lib/cli.js init -p"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.5.0",
     "gsap": "^3.12.7",
     "next": "15.2.2",
