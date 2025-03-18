@@ -26,3 +26,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  --transition-speed: 200ms;
+}
+
+body {
+  transition: background-color var(--transition-speed) ease-in-out, 
+              color var(--transition-speed) ease-in-out;
+}
+
+:root {
+  --transition-duration: 300ms;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1); /* Equivalent to ease-in-out */
+}
+
+/* Apply smooth transitions to all color/background changes */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: var(--transition-timing);
+  transition-duration: var(--transition-duration);
+}
+
+/* Disable transitions on page load */
+.no-transition * {
+  transition: none !important;
+}

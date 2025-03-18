@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTheme } from './ThemeContext'; // Make sure the path is correct
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -19,8 +20,13 @@ const itemVariants = {
 };
 
 export default function Hero() {
+  const { theme } = useTheme();
+  
   return (
-    <section className="w-full bg-gradient-to-b to-indigo-200 from-white py-16 md:py-24">
+    <section className={`w-full py-16 md:py-24 transition-all duration-300 ease-in-out
+      ${theme === 'light' 
+        ? 'bg-gradient-to-b from-white to-indigo-200' 
+        : 'bg-gradient-to-b from-gray-900 to-indigo-950'}`}>
       <div className="container mx-auto px-4 md:px-6">
         {/* Staggered container */}
         <motion.div 
@@ -31,7 +37,8 @@ export default function Hero() {
         >
           {/* Heading */}
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 transition-colors duration-300 ease-in-out
+              dark:text-white text-gray-900"
             variants={itemVariants}
           >
             Hyperscale your Audit & Advisory firm with AI
@@ -39,7 +46,8 @@ export default function Hero() {
 
           {/* Subheading */}
           <motion.p 
-            className="text-lg md:text-xl text-gray-700 max-w-4xl"
+            className="text-lg md:text-xl max-w-4xl transition-colors duration-300 ease-in-out
+              dark:text-gray-300 text-gray-700"
             variants={itemVariants}
           >
             SignalsHQ improves the performance of Audit & Advisory firms with agents to collect, extract, analyse, verify and reference documentation at scale
@@ -56,7 +64,10 @@ export default function Hero() {
           <motion.img 
             src="https://framerusercontent.com/images/2mWEfhFVLm62HjNg8br9Kp46Xdc.png" 
             alt="Audit & Advisory dashboard visualization"
-            className="rounded-lg shadow-xl w-full h-auto max-w-5xl"
+            className={`rounded-lg w-full h-auto max-w-5xl transition-all duration-300 ease-in-out
+              ${theme === 'light' 
+                ? 'shadow-xl' 
+                : 'shadow-2xl shadow-indigo-500/20 brightness-90'}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           />
