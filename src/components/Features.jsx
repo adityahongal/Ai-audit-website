@@ -3,10 +3,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTheme } from './ThemeContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Features() {
+  const { theme } = useTheme();
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function Features() {
       {
         opacity: 0,
         x: -50,
-        y: (i) => (i % 2 === 0 ? 30 : -30), // Alternating y-values for the ladder effect
+        y: (i) => (i % 2 === 0 ? 30 : -30),
         filter: 'blur(20px)',
       },
       {
@@ -56,22 +58,48 @@ export default function Features() {
   ];
 
   return (
-    <section className="bg-[#4B3F97] text-white py-16 px-4 lg:mx-20">
+    // <section className="bg-[#4B3F97] text-white py-16 px-4 lg:mx-20">
+    <section className={`py-16 px-4 w-full transition-all duration-300 ease-in-out
+        ${theme === 'light' 
+            ? 'bg-[#4B3F97] text-white' 
+            : 'bg-gray-900 text-gray-100'}`}>
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold mb-20">
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-semibold mb-20 transition-colors duration-300 ease-in-out">
           SignalsHQ is built for Auditors
         </h2>
+
+        {/* Feature Cards */}
         <div ref={containerRef} className="flex flex-wrap justify-center items-stretch gap-8">
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="feature-card flex-1 min-w-[350px] max-w-[450px] bg-white text-black rounded-2xl p-8 shadow-lg"
+              className={`feature-card flex-1 min-w-[350px] max-w-[450px] rounded-2xl p-8 shadow-lg transition-all duration-300 ease-in-out
+                ${theme === 'light' 
+                  ? 'bg-white text-black shadow-md' 
+                  : 'bg-gray-800 text-gray-200 shadow-md shadow-indigo-500/20'}`}
             >
+              {/* Icon */}
               <div className="flex items-center mb-6">
-                <span className="text-[#4B3F97] text-4xl">{feature.icon}</span>
+                <span className={`${theme === 'light' 
+                  ? 'text-[#4B3F97]' 
+                  : 'text-indigo-400'} text-4xl`}>
+                  {feature.icon}
+                </span>
               </div>
-              <h3 className="text-2xl text-left font-semibold mb-4">{feature.title}</h3>
-              <p className="text-gray-600 text-left leading-relaxed">{feature.description}</p>
+
+              {/* Title */}
+              <h3 className="text-2xl text-left font-semibold mb-4 transition-colors duration-300">
+                {feature.title}
+              </h3>
+
+              {/* Description */}
+              <p className={`text-left leading-relaxed transition-colors duration-300
+                ${theme === 'light' 
+                  ? 'text-gray-600' 
+                  : 'text-gray-400'}`}>
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
