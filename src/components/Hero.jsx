@@ -54,7 +54,7 @@ export default function Hero() {
             className="text-lg md:text-xl max-w-4xl transition-colors duration-300 ease-in-out dark:text-gray-300 text-gray-700"
             variants={itemVariants}
           >
-            SignalsHQ improves the performance of Audit & Advisory firms with agents to collect, extract, analyse, verify and reference documentation at scale
+            AudviseHQ improves the performance of Audit & Advisory firms with agents to collect, extract, analyse, verify and reference documentation at scale
           </motion.p>
         </motion.div>
 

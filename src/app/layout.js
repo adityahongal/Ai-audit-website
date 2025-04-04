@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react"
 import './globals.css';
 
 export const metadata = {
-  title: 'SignalsHQ - AI-Powered Auditing',
+  title: 'AudviseHQ - AI-Powered Auditing',
   description: 'Transform financial audits with AI.',
 };
 

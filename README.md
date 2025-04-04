@@ -3,7 +3,7 @@
 🚀 **Live Demo:** [https://aditya-hongal-ai-audit-website.vercel.app](https://aditya-hongal-ai-audit-website.vercel.app)  
 
 ## 📌 **Project Overview**  
-This project is a redesigned version of the **SignalsHQ** website, aimed at enhancing the user experience with modern frontend practices. The goal was to build a scalable, responsive, and performance-optimized web app using **Next.js** and **Tailwind CSS**.  
+This project is a redesigned version of the **AudviseHQ** website, aimed at enhancing the user experience with modern frontend practices. The goal was to build a scalable, responsive, and performance-optimized web app using **Next.js** and **Tailwind CSS**.  
 
 ---
 
@@ -33,7 +33,7 @@ This project is a redesigned version of the **SignalsHQ** website, aimed at enha
 ---
 
 ## 🔥 **Why This Project Matters**  
-This project aligns perfectly with the SignalsHQ goal of providing AI-driven auditing solutions by combining modern frontend practices with scalability and interactivity.  
+This project aligns perfectly with the AudviseHQ goal of providing AI-driven auditing solutions by combining modern frontend practices with scalability and interactivity.  
 
 ---
 

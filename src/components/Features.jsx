@@ -72,7 +72,7 @@ export default function Features() {
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-semibold mb-20 transition-colors duration-300 
             text-gray-800 dark:text-white">
-            SignalsHQ is built for Auditors
+            AudviseHQ is built for Auditors
           </h2>
 
           {/* Feature Cards */}

@@ -26,7 +26,7 @@ export default function Footer() {
                 </svg>
               </div>
               <span className="text-lg font-bold text-gray-900 dark:text-white">
-                SignalsHQ
+                AudviseHQ
               </span>
             </div>
           </div>

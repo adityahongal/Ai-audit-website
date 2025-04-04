@@ -96,16 +96,16 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "How does SignalsHQ work?",
-      answer: "SignalsHQ is like your extended team. It brings all your data management in one place..."
+      question: "How does AudviseHQ work?",
+      answer: "AudviseHQ is like your extended team. It brings all your data management in one place..."
     },
     {
       question: "Is my data secure?",
       answer: "Yes, your data is fully encrypted and protected with industry-standard security measures."
     },
     {
-      question: "What use cases does SignalsHQ work for?",
-      answer: "SignalsHQ works for various data management workflows including audit data collection..."
+      question: "What use cases does AudviseHQ work for?",
+      answer: "AudviseHQ works for various data management workflows including audit data collection..."
     },
     {
       question: "How do I get started?",
